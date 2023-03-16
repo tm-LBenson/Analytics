@@ -92,9 +92,9 @@ Follow the deployment instructions specific to your hosting provider to deploy t
   - [ ] Deploy the Express server (e.g., Heroku, DigitalOcean, AWS)
   - [ ] Deploy the React app (e.g., Netlify, Vercel, AWS)
 
-```
+
 
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
+
