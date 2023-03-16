@@ -1,0 +1,60 @@
+/* _home.scss */
+
+.hero {
+  background-color: $primary;
+  color: $white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-lg;
+
+  h1 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    font-size: $font-size-md;
+    line-height: $line-height-base;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  .call-to-action {
+    @include button-variant($white, $primary);
+    font-size: $font-size-md;
+    padding: $spacing-md $spacing-xl;
+    text-decoration: none;
+  }
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: $spacing-lg;
+
+  .feature {
+    flex: 1 0 calc(33.333% - 2 * #{$spacing-lg});
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-lg;
+    text-align: center;
+
+    h3 {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-md;
+      line-height: $line-height-base;
+    }
+  }
+}

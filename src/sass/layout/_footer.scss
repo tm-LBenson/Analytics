@@ -1,0 +1,63 @@
+/* _footer.scss */
+
+// Footer container
+.footer {
+  background-color: $footer-bg;
+  padding: $spacing-lg 0;
+  color: $footer-text-color;
+}
+
+// Footer logo
+.footer-logo {
+  color: $footer-text-color;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  margin-bottom: $spacing-md;
+
+  &:hover {
+    color: $footer-text-color;
+  }
+}
+
+// Footer columns
+.footer-column {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Footer column title
+.footer-title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-md;
+}
+
+// Footer links
+.footer-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-link {
+  color: $footer-link-color;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  margin-bottom: $spacing-sm;
+  display: block;
+
+  &:hover,
+  &:focus {
+    color: $footer-text-color;
+  }
+}
+
+// Footer copyright
+.footer-copyright {
+  font-size: $font-size-sm;
+  margin-top: $spacing-xl;
+  color: $footer-link-color;
+}

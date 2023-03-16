@@ -1,0 +1,27 @@
+/* _buttons.scss */
+.button {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $white;
+  background-color: $primary;
+  border: none;
+  border-radius: $border-radius;
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-hover;
+  }
+
+  &--secondary {
+    background-color: $secondary;
+
+    &:hover,
+    &:focus {
+      background-color: $secondary-hover;
+    }
+  }
+}
+

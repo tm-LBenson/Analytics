@@ -1,0 +1,44 @@
+/* _forms.scss */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $spacing-md;
+}
+
+// Use the form mixin for common form element styles
+@include form;
+
+button[type='submit'] {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $white;
+  background-color: $primary;
+  border: none;
+  border-radius: $border-radius;
+  padding: $spacing-md $spacing-lg;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-hover;
+  }
+
+  &:disabled {
+    background-color: $input-disabled-color;
+    cursor: not-allowed;
+  }
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: $error-color;
+  margin-top: $spacing-xs;
+}
+
+.success-message {
+  font-size: 0.875rem;
+  color: $success-color;
+  margin-top: $spacing-xs;
+}
