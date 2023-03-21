@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart,
@@ -9,29 +9,28 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { useSelector } from 'react-redux';
 
 // Register the required scales, elements, and plugins
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const TrafficChart = () => {
-  const [data, setData] = useState({});
+  const data = useSelector((state) => state.sites.sites);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('traffic.json');
-      const data = await response.json();
-      setData(data);
-    };
-    fetchData();
-  }, []);
+  const chartData = useMemo(() => {
+    if (!data || data.length === 0) return {};
 
-  const chartData = React.useMemo(() => {
-    if (!data.sites) return {};
+    const labels = data
+      .flatMap((site) => site.traffic.map((t) => t.date))
+      .filter((v, i, a) => a.indexOf(v) === i);
+    labels.sort();
 
-    const labels = Object.keys(data.dailyTotal);
-    const datasets = data.sites.map((site) => ({
+    const datasets = data.map((site) => ({
       label: site.name,
-      data: labels.map((label) => site.traffic[label] || 0),
+      data: labels.map((label) => {
+        const traffic = site.traffic.find((t) => t.date === label);
+        return traffic ? traffic.visits : 0;
+      }),
       backgroundColor: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
         Math.random() * 256,
       )}, ${Math.floor(Math.random() * 256)}, 0.5)`,
@@ -60,12 +59,14 @@ const TrafficChart = () => {
   return (
     <div>
       <h2>Daily Traffic</h2>
-      {chartData.labels && (
-        <Bar
-          data={chartData}
-          options={options}
-        />
-      )}
+      <div className="container">
+        {chartData.labels && (
+          <Bar
+            data={chartData}
+            options={options}
+          />
+        )}
+      </div>
     </div>
   );
 };
