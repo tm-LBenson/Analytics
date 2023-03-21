@@ -4,6 +4,9 @@ This project is an analytics dashboard that visualizes website traffic data for 
 
 The project is built using Vite and React, and it retrieves data from an Express server that processes visitor information from various websites.
 
+## Deployed Live
+[Netlify](https://portfolio-analytics.netlify.app/)  
+
 ## Getting Started
 
 ### Prerequisites
