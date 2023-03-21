@@ -65,14 +65,16 @@ const SiteCarousel = ({ data, chartType }) => {
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <button
-          className="button"
+          className={`button ${dateIndex === 0 ? 'btn-disabled' : ''}`}
           onClick={handlePrev}
           disabled={dateIndex === 0}
         >
           Prev
         </button>
         <button
-          className="button"
+          className={`button ${
+            dateIndex === data[0].traffic.length - 1 ? 'btn-disabled' : ''
+          }`}
           onClick={handleNext}
           disabled={dateIndex === data[0].traffic.length - 1}
         >

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TrafficChart from './TrafficChart';
 import SiteDetails from './SiteDetails';
+import Sidebar from './Sidebar';
 import { useSelector } from 'react-redux';
 
 export default function Dashboard() {
@@ -25,20 +26,13 @@ export default function Dashboard() {
   };
 
   return (
-    <div>
+    <div className="content">
       {!selectedSite && <TrafficChart />}
-      <h2>Sites</h2>
-      <ul className="container">
-        {Object.keys(groupedSites).map((siteName) => (
-          <li
-            className="btn button"
-            key={siteName}
-            onClick={() => handleSiteClick(siteName)}
-          >
-            {siteName}
-          </li>
-        ))}
-      </ul>
+
+      <Sidebar
+        items={Object.keys(groupedSites)}
+        onItemClick={handleSiteClick}
+      />
       {selectedSite && (
         <>
           <button onClick={handleOverviewClick}>Overview</button>

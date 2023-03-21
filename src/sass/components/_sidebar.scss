@@ -7,9 +7,12 @@
   z-index: 1000;
   width: 100%;
   max-width: 20rem;
-  background-color: $light;
+  background-color: $footer-bg;
   box-shadow: 0 0.5rem 1rem rgba($dark, 0.1);
-
+  &__logo {
+    font-size: 3rem;
+    padding: 2rem;
+  }
   @include respond(md) {
     width: 25%;
   }
@@ -51,4 +54,29 @@
       color: $white;
     }
   }
+}
+
+.sidebar {
+  width: 100%;
+}
+
+.sidebar__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar__list-item {
+  margin-bottom: 1rem;
+}
+
+.sidebar__list-item-button {
+  width: 100%;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  padding: 0.5rem;
+  cursor: pointer;
 }

@@ -12,7 +12,6 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>LBenson Analytics</h1>
       <Dashboard />
     </div>
   );
