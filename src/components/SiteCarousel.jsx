@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import Carousel from './Carousel';
 import DeviceTypeChart from './DeviceTypeChart';
 import ScreenSizeChart from './ScreenSizeChart';
-
+import { setDateIndex } from '../store/slices/dateIndex';
+import { useDispatch, useSelector } from 'react-redux';
 const SiteCarousel = ({ data, chartType }) => {
-  const [dateIndex, setDateIndex] = useState(0);
-
+  const dateIndex = useSelector((state) => state.dateIndex.value);
+  const dispatch = useDispatch();
   const handleChange = (event) => {
-    setDateIndex(
-      data[0].traffic.findIndex((t) => t.date === event.target.value),
+    dispatch(
+      setDateIndex(
+        data[0].traffic.findIndex((t) => t.date === event.target.value),
+      ),
     );
   };
 

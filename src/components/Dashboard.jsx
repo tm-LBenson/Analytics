@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import TrafficChart from './TrafficChart';
 import SiteDetails from './SiteDetails';
 import Sidebar from './Sidebar';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { resetDateIndex } from '../store/slices/dateIndex';
 export default function Dashboard() {
+  const dispatch = useDispatch();
   const [selectedSite, setSelectedSite] = useState(null);
+
   const sites = useSelector((state) => state.sites.sites);
 
   // Group sites by their name
@@ -19,6 +21,7 @@ export default function Dashboard() {
 
   const handleSiteClick = (siteName) => {
     setSelectedSite(groupedSites[siteName]);
+    dispatch(resetDateIndex());
   };
 
   const handleOverviewClick = () => {
