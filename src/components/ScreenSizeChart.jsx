@@ -1,17 +1,11 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import {
-  Chart,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { Chart, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 
-// Register the required scales, elements, and plugins
-Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+// Register the required elements and plugins
+Chart.register(ArcElement, Title, Tooltip, Legend);
+
+
 
 const ScreenSizeChart = ({ data }) => {
   const chartData = {
@@ -38,16 +32,17 @@ const ScreenSizeChart = ({ data }) => {
         text: 'Screen Sizes',
       },
       legend: {
-        display: false,
+        display: true,
       },
     },
   };
 
   return (
-    <Bar
+    <Pie
       data={chartData}
       options={options}
     />
   );
 };
+
 export default ScreenSizeChart;

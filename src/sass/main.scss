@@ -19,6 +19,8 @@
 @import 'components/_forms';
 @import 'components/_cards';
 @import 'components/sidebar';
+@import 'components/chart';
+
 // Layout
 @import 'layout/_header';
 @import 'layout/_footer';
@@ -31,7 +33,7 @@
 
 // Themes
 @import 'themes/_default';
-@import 'themes/_alternate';
+@import 'themes/dark-mode';
 
 // Vendors
 @import 'vendors/_normalize';
