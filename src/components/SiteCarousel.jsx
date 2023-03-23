@@ -14,20 +14,19 @@ const SiteCarousel = ({ data, chartType }) => {
       ),
     );
   };
-
   const handlePrev = () => {
-    setDateIndex((prevIndex) =>
-      prevIndex === 0 ? data[0].traffic.length - 1 : prevIndex - 1,
-    );
+    const newIndex =
+      dateIndex === 0 ? data[0].traffic.length - 1 : dateIndex - 1;
+    dispatch(setDateIndex(newIndex));
   };
 
   const handleNext = () => {
-    setDateIndex((prevIndex) =>
-      prevIndex === data[0].traffic.length - 1 ? 0 : prevIndex + 1,
-    );
+    const newIndex =
+      dateIndex === data[0].traffic.length - 1 ? 0 : dateIndex + 1;
+    dispatch(setDateIndex(newIndex));
   };
 
-  const date = data[0].traffic[dateIndex].date;
+  const date = data[0].traffic[dateIndex]?.date;
 
   return (
     <div>

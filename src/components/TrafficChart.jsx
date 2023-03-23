@@ -59,7 +59,7 @@ const TrafficChart = () => {
   return (
     <div>
       <h2>Daily Traffic</h2>
-      <div className="container">
+      <div className="container chart-container">
         {chartData.labels && (
           <Bar
             data={chartData}

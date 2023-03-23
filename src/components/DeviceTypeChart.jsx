@@ -1,5 +1,8 @@
-import { Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
+import { Chart, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 
+// Register the required elements and plugins
+Chart.register(ArcElement, Title, Tooltip, Legend);
 const DeviceTypeChart = ({ data }) => {
   const chartData = {
     labels: Object.keys(data),
@@ -30,7 +33,7 @@ const DeviceTypeChart = ({ data }) => {
   };
 
   return (
-    <Bar
+    <Pie
       data={chartData}
       options={options}
     />
