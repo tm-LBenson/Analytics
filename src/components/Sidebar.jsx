@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../store/slices/auth';
+import { clearData } from '../store/slices/sites';
 
-const Sidebar = ({ items, onItemClick }) => {
+const Sidebar = ({ items, onItemClick, onLoginClick }) => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
+  const dispatch = useDispatch();
 
-  const toggleLoginForm = () => {
-    setShowLoginForm(!showLoginForm);
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+      dispatch(clearData());
+      dispatch(logout());
+    } else {
+      onLoginClick();
+    }
   };
 
-  const handleLogin = (loggedInState) => {
-    setLoggedIn(loggedInState);
-    setShowLoginForm(false);
-  };
   useEffect(() => {
     const handleColorSchemeChange = (event) => {
       setIsDarkMode(event.matches);
@@ -75,9 +79,9 @@ const Sidebar = ({ items, onItemClick }) => {
         <hr />
         <button
           className="sidebar__toggle-button"
-          onClick={toggleLoginForm}
+          onClick={handleButtonClick}
         >
-          {loggedIn ? 'Log out' : 'Log in'}
+          {isLoggedIn ? 'Log out' : 'Log in'}
         </button>
         <button
           className="sidebar__toggle-button"

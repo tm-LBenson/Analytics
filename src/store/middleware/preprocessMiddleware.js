@@ -37,13 +37,22 @@ const preprocessData = (sites) => {
 const preprocessMiddleware = (store) => (next) => async (action) => {
   if (action.type === 'sites/getAllSites') {
     try {
-      const processedData = preprocessData(action.payload.sites);
-      action.payload.sites = processedData;
+      // Check if the user is logged in
+      const loggedIn = store.getState().auth.isLoggedIn;
+      if (loggedIn) {
+        const processedData = preprocessData(action.payload.sites);
+        action.payload.sites = processedData;
+      }
     } catch (error) {
       console.error('Error preprocessing site data:', error);
+      // Dispatch an error action to handle the error in the store
+      store.dispatch({
+        type: 'sites/preprocessingError',
+        payload: error.message,
+      });
     }
   }
-  next(action);
+  return next(action);
 };
 
 export default preprocessMiddleware;
