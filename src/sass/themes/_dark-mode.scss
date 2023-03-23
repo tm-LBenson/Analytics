@@ -1,0 +1,104 @@
+// dark-mode theme styles
+.dark-mode {
+  body {
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $white;
+    background-color: $dark;
+  }
+  a {
+    color: $info;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $info-hover;
+      text-decoration: underline;
+    }
+  }
+
+  // Buttons
+  button {
+    background-color: $secondary;
+    color: $white;
+    font-size: $font-size-md;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: $secondary-hover;
+    }
+  }
+
+  // Forms
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: $spacing-sm;
+    font-size: $font-size-md;
+    color: $white;
+    border: 1px solid $input-border-color;
+    border-radius: $border-radius;
+    background-color: $dark-hover;
+    outline: none;
+
+    &:focus {
+      border-color: $input-focus-border-color;
+    }
+
+    &:disabled {
+      background-color: $light-hover;
+      color: $input-disabled-color;
+    }
+  }
+
+  // Alerts
+  .alert {
+    padding: $spacing-sm $spacing-md;
+    margin-bottom: $spacing-lg;
+    border-radius: $border-radius;
+  }
+
+  .alert-success {
+    background-color: $success;
+    color: $white;
+  }
+
+  .alert-error {
+    background-color: $danger;
+    color: $white;
+  }
+
+  .sidebar {
+    background-color: $footer-bg;
+    box-shadow: 0 0.5rem 1rem rgba($dark, 0.1);
+
+    &__header {
+      background-color: $primary;
+      color: $white;
+    }
+
+    &__link {
+      color: $dark;
+
+      &:hover,
+      &:focus {
+        background-color: $primary-hover;
+      }
+
+      &--active {
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+// Theme-specific styles
+// Add your own custom styles and overrides here
