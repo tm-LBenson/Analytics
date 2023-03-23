@@ -7,14 +7,17 @@
   z-index: 1000;
   width: 100%;
   max-width: 20rem;
-  background-color: $footer-bg;
-  box-shadow: 0 0.5rem 1rem rgba($dark, 0.1);
   padding: 1.5rem;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   &__logo {
     font-size: 3rem;
     padding: 2rem;
   }
+
   @include respond(md) {
     width: 25%;
   }
@@ -25,8 +28,6 @@
 
   &__header {
     padding: $spacing-sm $spacing-md;
-    background-color: $primary;
-    color: $white;
     font-size: $font-size-lg;
     font-weight: $font-weight-bold;
   }
@@ -39,7 +40,6 @@
 
   &__link {
     display: block;
-    color: $dark;
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
     padding: $spacing-xs $spacing-md;
@@ -47,19 +47,18 @@
 
     &:hover,
     &:focus {
-      background-color: $primary-hover;
       color: $white;
     }
 
     &--active {
-      background-color: $primary;
       color: $white;
     }
   }
-}
-
-.sidebar {
-  width: 100%;
+  &__toggle-button {
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .sidebar__list {

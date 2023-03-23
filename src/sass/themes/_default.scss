@@ -1,79 +1,107 @@
 // Default theme styles
-body {
-  width: 100%;
-  font-family: 'Work Sans', sans-serif;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  color: $dark;
-  background-color: $white;
-}
-
-a {
-  color: $link-color;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-    text-decoration: underline;
-  }
-}
-
-// Buttons
-button {
-  background-color: $primary;
-  color: $white;
-  font-size: $font-size-md;
-  padding: $spacing-sm $spacing-md;
-  border: none;
-  border-radius: $border-radius;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-
-  &:hover,
-  &:focus {
-    background-color: $primary-hover;
-  }
-}
-
-// Forms
-input,
-textarea,
-select {
-  width: 100%;
-  padding: $spacing-sm;
-  font-size: $font-size-md;
-  color: $dark;
-  border: 1px solid $input-border-color;
-  border-radius: $border-radius;
-  outline: none;
-
-  &:focus {
-    border-color: $input-focus-border-color;
+.theme-default {
+  body {
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $dark;
+    background-color: $white;
   }
 
-  &:disabled {
-    background-color: $light;
-    color: $input-disabled-color;
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+      text-decoration: underline;
+    }
   }
-}
 
-// Alerts
-.alert {
-  padding: $spacing-sm $spacing-md;
-  margin-bottom: $spacing-lg;
-  border-radius: $border-radius;
-}
+  // Buttons
+  button {
+    background-color: $primary;
+    color: $white;
+    font-size: $font-size-md;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 
-.alert-success {
-  background-color: $success-color;
-  color: $white;
-}
+    &:hover,
+    &:focus {
+      background-color: $primary-hover;
+    }
+  }
 
-.alert-error {
-  background-color: $error-color;
-  color: $white;
-}
+  // Forms
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: $spacing-sm;
+    font-size: $font-size-md;
+    color: $dark;
+    border: 1px solid $input-border-color;
+    border-radius: $border-radius;
+    outline: none;
 
-// Theme-specific styles
-// Add your own custom styles and overrides here
+    &:focus {
+      border-color: $input-focus-border-color;
+    }
+
+    &:disabled {
+      background-color: $light;
+      color: $input-disabled-color;
+    }
+  }
+
+  // Alerts
+  .alert {
+    padding: $spacing-sm $spacing-md;
+    margin-bottom: $spacing-lg;
+    border-radius: $border-radius;
+  }
+
+  .alert-success {
+    background-color: $success-color;
+    color: $white;
+  }
+
+  .alert-error {
+    background-color: $error-color;
+    color: $white;
+  }
+
+  // Default theme styles
+
+  // Sidebar styles for default theme
+  .sidebar {
+    background-color: $lighter-bg;
+    box-shadow: 0 0.5rem 1rem rgba($dark, 0.1);
+
+    &__header {
+      background-color: $lighter-primary;
+      color: $dark;
+    }
+
+    &__link {
+      color: $dark;
+
+      &:hover,
+      &:focus {
+        background-color: $lighter-primary-hover;
+      }
+
+      &--active {
+        background-color: $lighter-primary;
+      }
+    }
+  }
+
+  // Theme-specific styles
+  // Add your own custom styles and overrides here
+}
