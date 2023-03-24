@@ -8,8 +8,15 @@ const fetchSitesMiddleware = (store) => (next) => async (action) => {
       return next(action);
     }
     try {
+      const token = state.auth.token;
       const response = await fetch(
         'https://astro-server-z1u9.onrender.com/traffic-data',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       const data = await response.json();
       action.payload = data;

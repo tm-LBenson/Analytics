@@ -1,15 +1,16 @@
 /** @format */
 
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllSites } from './store/slices/sites';
 import Dashboard from './components/Dashboard';
 function App() {
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSites());
-  }, []);
+    isLoggedIn && dispatch(getAllSites());
+  }, [isLoggedIn]);
   return (
     <div className="App">
       <Dashboard />

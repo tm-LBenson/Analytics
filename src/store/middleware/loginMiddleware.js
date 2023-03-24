@@ -15,7 +15,7 @@ const loginMiddleware = (store) => (next) => async (action) => {
 
       if (response.ok) {
         const data = await response.json();
-        action.payload.user = data.user;
+
         action.payload.token = data.token;
       } else {
         console.error('Login failed.');

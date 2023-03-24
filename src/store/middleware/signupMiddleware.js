@@ -17,7 +17,7 @@ const signupMiddleware = (store) => (next) => async (action) => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        action.payload.user = data.user;
+       
         action.payload.token = data.token;
       } else {
         console.error('Signup failed.');

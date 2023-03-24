@@ -16,7 +16,6 @@ const store = configureStore({
   },
 
   middleware: [
-    loggerMiddleware,
     signupMiddleware,
     loginMiddleware,
     fetchSitesMiddleware,
