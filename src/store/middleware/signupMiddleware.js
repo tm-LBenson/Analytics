@@ -1,7 +1,5 @@
-import { signup } from '../slices/';
-
 const signupMiddleware = (store) => (next) => async (action) => {
-  if (action.type === signup.type) {
+  if (action.type === 'auth/signup') {
     const { username, password } = action.payload;
 
     try {
@@ -15,10 +13,12 @@ const signupMiddleware = (store) => (next) => async (action) => {
           body: JSON.stringify({ username, password }),
         },
       );
-      console.log(response);
+
       if (response.ok) {
         const data = await response.json();
-        store.dispatch(signup({ user: data.user, token: data.token }));
+        console.log(data);
+        action.payload.user = data.user;
+        action.payload.token = data.token;
       } else {
         console.error('Signup failed.');
       }

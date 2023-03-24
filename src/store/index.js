@@ -6,6 +6,8 @@ import fetchSitesMiddleware from './middleware/fetchSitesMiddleware';
 import preprocessMiddleware from './middleware/preprocessMiddleware';
 import dateIndex from './slices/dateIndex';
 import auth from './slices/auth';
+import signupMiddleware from './middleware/signupMiddleware';
+import loginMiddleware from './middleware/loginMiddleware';
 const store = configureStore({
   reducer: {
     sites,
@@ -13,7 +15,13 @@ const store = configureStore({
     auth,
   },
 
-  middleware: [loggerMiddleware, fetchSitesMiddleware, preprocessMiddleware],
+  middleware: [
+    loggerMiddleware,
+    signupMiddleware,
+    loginMiddleware,
+    fetchSitesMiddleware,
+    preprocessMiddleware,
+  ],
 });
 
 export default store;
