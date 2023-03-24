@@ -9,6 +9,7 @@ const dateIndexSlice = createSlice({
   initialState,
   reducers: {
     setDateIndex: (state, action) => {
+      console.log(action.payload);
       state.value = action.payload;
     },
     resetDateIndex: (state) => {
