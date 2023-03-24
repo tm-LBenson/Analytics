@@ -10,10 +10,7 @@ const sites = createSlice({
   initialState,
   reducers: {
     getAllSites: (state, action) => {
-      if (action.payload?.sites) {
-        state.sites = [...action.payload.sites];
-        state.dailyTotals = [...action.payload.dailyTotals];
-      }
+      state.sites = [...action.payload];
     },
     clearData: (state, action) => {
       state.sites = [];

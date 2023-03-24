@@ -5,13 +5,16 @@ const loginMiddleware = (store) => (next) => async (action) => {
     const { username, password } = action.payload;
 
     try {
-      const response = await fetch('http://localhost:3002/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://astro-server-z1u9.onrender.com/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
         },
-        body: JSON.stringify({ username, password }),
-      });
+      );
 
       if (response.ok) {
         const data = await response.json();

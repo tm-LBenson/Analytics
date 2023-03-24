@@ -40,8 +40,8 @@ const preprocessMiddleware = (store) => (next) => async (action) => {
       // Check if the user is logged in
       const loggedIn = store.getState().auth.isLoggedIn;
       if (loggedIn) {
-        const processedData = preprocessData(action.payload.sites);
-        action.payload.sites = processedData;
+        const processedData = preprocessData(action.payload);
+        action.payload = processedData;
       }
     } catch (error) {
       console.error('Error preprocessing site data:', error);

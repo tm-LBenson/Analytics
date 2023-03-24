@@ -10,7 +10,7 @@ const fetchSitesMiddleware = (store) => (next) => async (action) => {
     try {
       const token = state.auth.token;
       const response = await fetch(
-        'https://astro-server-z1u9.onrender.com/traffic-data',
+        'https://astro-server-z1u9.onrender.com/user-sites',
         {
           headers: {
             'Content-Type': 'application/json',
@@ -19,7 +19,9 @@ const fetchSitesMiddleware = (store) => (next) => async (action) => {
         },
       );
       const data = await response.json();
+      console.log(data);
       action.payload = data;
+      console.log(action.payload);
     } catch (error) {
       console.error('Error fetching site data:', error);
     }
