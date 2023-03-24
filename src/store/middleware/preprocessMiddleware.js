@@ -13,14 +13,7 @@ const preprocessData = (sites) => {
 
     const formattedTraffic = site.traffic.map((trafficItem) => {
       const dateString = trafficItem.date.$date || trafficItem.date;
-      const date = new Date(dateString);
-      const timestamp = date.getTime();
-
-      const formattedDate = new Intl.DateTimeFormat('en-US', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      }).format(timestamp);
+      const formattedDate = new Date(dateString).toISOString().slice(0, 10);
 
       return { ...trafficItem, date: formattedDate };
     });
@@ -29,6 +22,9 @@ const preprocessData = (sites) => {
       ...siteMap[site.name].traffic,
       ...formattedTraffic,
     ];
+
+    // Reverse the traffic array to display the most recent date first
+    siteMap[site.name].traffic.reverse();
   });
 
   return Object.values(siteMap);

@@ -8,6 +8,7 @@ import dateIndex from './slices/dateIndex';
 import auth from './slices/auth';
 import signupMiddleware from './middleware/signupMiddleware';
 import loginMiddleware from './middleware/loginMiddleware';
+import checkSessionCookieMiddleware from './middleware/checkSessionCookieMiddleware';
 const store = configureStore({
   reducer: {
     sites,
@@ -16,6 +17,7 @@ const store = configureStore({
   },
 
   middleware: [
+    checkSessionCookieMiddleware,
     signupMiddleware,
     loginMiddleware,
     fetchSitesMiddleware,
