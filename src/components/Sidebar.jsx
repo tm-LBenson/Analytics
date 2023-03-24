@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from '../store/slices/auth';
+import { logout } from '../store/slices/auth';
 import { clearData } from '../store/slices/sites';
 
 const Sidebar = ({ items, onItemClick, onLoginClick }) => {
@@ -81,6 +81,7 @@ const Sidebar = ({ items, onItemClick, onLoginClick }) => {
           className="sidebar__toggle-button"
           onClick={handleButtonClick}
         >
+          <Icon icon="material-symbols:logout" />
           {isLoggedIn ? 'Log out' : 'Log in'}
         </button>
         <button
