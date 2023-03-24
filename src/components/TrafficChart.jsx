@@ -18,7 +18,7 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const TrafficChart = () => {
   const data = useSelector((state) => state.sites.sites);
-  console.log(data);
+
   const dateIndex = useSelector((state) => state.dateIndex.value);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -70,9 +70,12 @@ const TrafficChart = () => {
 
   return (
     <div>
-      <h2>Daily Traffic</h2>
-      <label htmlFor="date">Date:</label>
-
+      {chartData.labels && (
+        <>
+          <h2>Daily Traffic</h2>
+          <label htmlFor="date">Date:</label>
+        </>
+      )}
       {chartData.labels && (
         <>
           <select

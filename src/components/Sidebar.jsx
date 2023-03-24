@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/slices/auth';
 import { clearData } from '../store/slices/sites';
 
-const Sidebar = ({ items, onItemClick, onLoginClick }) => {
+const Sidebar = ({ items, onItemClick, onLoginClick, onUserProfileClick }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const dispatch = useDispatch();
@@ -84,6 +84,16 @@ const Sidebar = ({ items, onItemClick, onLoginClick }) => {
           <Icon icon="material-symbols:logout" />
           {isLoggedIn ? 'Log out' : 'Log in'}
         </button>
+        {isLoggedIn && (
+          <button
+            className="sidebar__toggle-button"
+            onClick={onUserProfileClick}
+          >
+            <Icon icon="mdi:account-circle-outline" />
+            User Profile
+          </button>
+        )}
+
         <button
           className="sidebar__toggle-button"
           onClick={toggleDarkMode}
