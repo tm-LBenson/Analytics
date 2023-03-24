@@ -16,9 +16,12 @@ const signupMiddleware = (store) => (next) => async (action) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-       
+        cookies.set('session_token', data.token, { path: '/' });
+        cookies.set('session_username', username, { path: '/' });
+        cookies.set('session_clientId', data.clientId, { path: '/' });
+
         action.payload.token = data.token;
+        action.payload.clientId = data.clientId;
       } else {
         console.error('Signup failed.');
       }
