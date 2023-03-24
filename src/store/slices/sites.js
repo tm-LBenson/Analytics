@@ -10,12 +10,15 @@ const sites = createSlice({
   initialState,
   reducers: {
     getAllSites: (state, action) => {
-      state.sites = [...action.payload.sites];
-      state.dailyTotals = [...action.payload.dailyTotals];
+      state.sites = [...action.payload];
+    },
+    clearData: (state, action) => {
+      state.sites = [];
+      state.dailyTotals = [];
     },
   },
 });
 
-export const { getAllSites } = sites.actions;
+export const { getAllSites, clearData } = sites.actions;
 
 export default sites.reducer;
