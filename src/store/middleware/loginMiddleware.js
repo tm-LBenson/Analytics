@@ -1,4 +1,7 @@
 import { login } from '../slices/auth';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const loginMiddleware = (store) => (next) => async (action) => {
   if (action.type === 'auth/login') {
@@ -20,6 +23,10 @@ const loginMiddleware = (store) => (next) => async (action) => {
         const data = await response.json();
 
         action.payload.token = data.token;
+
+        // Set a session cookie with the token and username
+        cookies.set('session_token', data.token, { path: '/' });
+        cookies.set('session_username', username, { path: '/' });
       } else {
         console.error('Login failed.');
       }
