@@ -49,28 +49,30 @@ const LocationMap = ({ ipAddresses }) => {
   return isLoading ? (
     <div>Loading...</div>
   ) : (
-    <MapContainer
-      key={JSON.stringify(ipAddresses)}
-      center={[39.8283, -98.5795]}
-      zoom={3.5}
-      style={{ height: '500px', width: '100%' }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {locations.map((location) => (
-        <Marker
-          key={crypto.randomUUID()}
-          position={[location.latitude, location.longitude]}
-        >
-          <Popup>
-            {location.ip} <br />
-            {location.city}, {location.region}, {location.country}
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <>
+      <br />
+      <MapContainer
+        key={JSON.stringify(ipAddresses)}
+        center={[39.8283, -98.5795]}
+        zoom={3.5}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {locations.map((location) => (
+          <Marker
+            key={crypto.randomUUID()}
+            position={[location.latitude, location.longitude]}
+          >
+            <Popup>
+              {location.ip} <br />
+              {location.city}, {location.region}, {location.country}
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </>
   );
 };
 
