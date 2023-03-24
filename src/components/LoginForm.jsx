@@ -1,3 +1,4 @@
+// LoginForm.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/slices/auth';
@@ -19,8 +20,7 @@ const LoginForm = () => {
     setShowSignUpForm(true);
   };
 
-  const handleSignUpSubmit = (userData) => {
-    console.log('sign up form submitted:', userData);
+  const handleSwitchToLogin = () => {
     setShowSignUpForm(false);
   };
 
@@ -58,7 +58,7 @@ const LoginForm = () => {
           </p>
         </form>
       ) : (
-        <SignUpForm onSubmit={handleSignUpSubmit} />
+        <SignUpForm onSwitchToLogin={handleSwitchToLogin} />
       )}
     </div>
   );

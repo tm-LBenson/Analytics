@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signup } from '../store/slices/auth';
 
-const SignUpForm = () => {
+const SignUpForm = ({ onSwitchToLogin }) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +15,10 @@ const SignUpForm = () => {
       return;
     }
     dispatch(signup({ username, password }));
+  };
+  const handleSwitchToLoginClick = (e) => {
+    e.preventDefault();
+    onSwitchToLogin();
   };
 
   return (
@@ -46,7 +50,10 @@ const SignUpForm = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
-      <button type="submit">Sign Up</button>
+      <div>
+        <button type="submit">Sign Up</button>
+        <button className='mx-sm' onClick={handleSwitchToLoginClick}>Log In</button>
+      </div>
     </form>
   );
 };
