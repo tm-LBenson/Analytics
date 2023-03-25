@@ -6,9 +6,7 @@ The project is built using Vite and React, and it retrieves data from an Express
 
 ## Deployed Live
 
-
 [Netlify](https://portfolio-analytics.netlify.app/)
-
 
 ## Getting Started
 
@@ -76,9 +74,6 @@ Follow the deployment instructions specific to your hosting provider to deploy t
 - Screen size distribution
 - IP address tracking/location tracking
 
-
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-
