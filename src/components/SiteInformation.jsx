@@ -74,6 +74,7 @@ const SiteInformation = () => {
         account.
       </p>
       <h3>How to use Analytics Benson in your React app</h3>
+
       <ol>
         <li>
           Install the package: <CodeBlock code="npm install analytics-benson" />
@@ -90,16 +91,20 @@ const SiteInformation = () => {
         </li>
         <li>
           Place the function call in a suitable location in your app, such as in
-          the root component or a layout component. For example:
+          the root component or a layout component. For example you can use the
+          useEffect hook to call the function when the component first loads:
           <br />
           <PreBlock
-            code={`import React from 'react';
+            code={`import React, {useEffect} from 'react';
 import './App.css';
 import { analytics } from 'analytics-benson';
 
 function App() {
   const CLIENT_ID = 'this-is-an-example-client-id'
-  analytics('Hello World App!', 'CLIENT_ID');
+
+    useEffect(() => {
+    analytics('Hello World App', CLIENT_ID);
+  }, []);
 
   return (
     <div className="App">
@@ -110,6 +115,11 @@ function App() {
 
 export default App;`}
           />
+          <p>
+            Note: The function will run once per hour unless the user is not
+            keeping localStorage. A timestamp is placed in localStorage to check
+            if the user has used the app in the past hour.{' '}
+          </p>
         </li>
       </ol>
       <br />
@@ -128,6 +138,11 @@ export default App;`}
 </script>
         `}
       />
+      <p>
+        Note: The function will run once per hour unless the user is not keeping
+        localStorage. A timestamp is placed in localStorage to check if the user
+        has used the app in the past hour.{' '}
+      </p>
     </div>
   );
 };
