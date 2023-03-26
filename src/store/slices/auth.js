@@ -41,6 +41,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       cookies.remove('session_token');
       cookies.remove('session_username');
+      window.location.reload();
     },
   },
 });
