@@ -31,6 +31,7 @@ export default function Dashboard() {
     setShowUserProfile(!showUserProfile);
   };
   const handleSiteClick = (siteName) => {
+    setShowUserProfile(false);
     setSelectedSite(groupedSites[siteName]);
     dispatch(resetDateIndex());
   };
@@ -41,14 +42,17 @@ export default function Dashboard() {
   };
 
   const handleLoginClick = () => {
+    setShowUserProfile(false);
     setCurrentComponent('LoginForm');
   };
 
   const handleSignupClick = () => {
+    setShowUserProfile(false);
     setCurrentComponent('SignupForm');
   };
 
   const handleBackClick = () => {
+    setShowUserProfile(false);
     setCurrentComponent('LoginForm');
   };
 
@@ -80,10 +84,10 @@ export default function Dashboard() {
             onUserProfileClick={handleUserProfileClick}
           />
 
-          {selectedSite?.name ||
-            (showUserProfile ? (
-              <button onClick={handleOverviewClick}>Site Overview</button>
-            ) : null)}
+          {selectedSite || showUserProfile ? (
+            <button onClick={handleOverviewClick}>Site Overview</button>
+          ) : null}
+
           {selectedSite && !showUserProfile && (
             <>
               {loggedIn && (
