@@ -132,9 +132,9 @@ export default App;`}
       </p>
       <PreBlock
         code={`
-<script src="https://cdn.jsdelivr.net/npm/analytics-benson@1.0.8/analytics.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/analytics-benson@1.1.0/analytics.min.js"></script>
 <script>
-  analytics('yourSiteName', 'yourClientId');
+  analytics('yourSite Name', 'your-Client-Id');
 </script>
         `}
       />
