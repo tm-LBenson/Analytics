@@ -28,7 +28,7 @@ export default function Dashboard() {
   }, {});
 
   const handleUserProfileClick = () => {
-    setShowUserProfile(true);
+    setShowUserProfile(!showUserProfile);
   };
   const handleSiteClick = (siteName) => {
     setSelectedSite(groupedSites[siteName]);

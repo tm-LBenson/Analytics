@@ -1,6 +1,6 @@
 # Analytics Dashboard
 
-This project is an analytics dashboard that visualizes website traffic data for multiple sites. It provides insights into daily visitors, device types, screen sizes, and IP addresses. The dashboard displays traffic data over different time periods, such as 30 days, 180 days, and 365 days.
+This project is an analytics dashboard that visualizes website traffic data for multiple sites. It provides insights into daily visitors, device types, screen sizes, and IP addresses.
 
 The project is built using Vite and React, and it retrieves data from an Express server that processes visitor information from various websites.
 
@@ -30,14 +30,14 @@ The project is built using Vite and React, and it retrieves data from an Express
 
 ### Integrating Analytics Benson Package
 
-1. Install the Analytics Benson package:
+1. Install the [Analytics Benson package](https://www.npmjs.com/package/analytics-benson):
 
    `npm install analytics-benson`
 
 2. Import the `analytics` function from the package:
 
 ```js
-import analytics from 'analytics-benson';
+import { analytics } from 'analytics-benson';
 ```
 
 3. Call the analytics function, passing in your siteName and clientId:
