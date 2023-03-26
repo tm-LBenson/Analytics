@@ -82,7 +82,7 @@ const SiteInformation = () => {
         <li>
           Import the <code>analytics</code> function from the package:
           <br />
-          <CodeBlock code="import { analytics } from 'analytics-benson';" />
+          <CodeBlock code="import  analytics  from 'analytics-benson';" />
         </li>
         <li>
           Call the analytics function, passing in your siteName and clientId:
@@ -97,7 +97,7 @@ const SiteInformation = () => {
           <PreBlock
             code={`import React, {useEffect} from 'react';
 import './App.css';
-import { analytics } from 'analytics-benson';
+import  analytics  from 'analytics-benson';
 
 function App() {
   const CLIENT_ID = 'this-is-an-example-client-id'
