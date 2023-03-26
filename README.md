@@ -37,7 +37,7 @@ The project is built using Vite and React, and it retrieves data from an Express
 2. Import the `analytics` function from the package:
 
 ```js
-import { analytics } from 'analytics-benson';
+import analytics from 'analytics-benson';
 ```
 
 3. Call the analytics function, passing in your siteName and clientId:
