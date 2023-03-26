@@ -17,6 +17,27 @@ const SiteInformation = () => {
       },
     );
   };
+  const PreBlock = ({ code }) => (
+    <div className="code-block">
+      <pre>{code}</pre>
+      {copiedCode === code ? (
+        <Icon
+          width="40"
+          icon="mdi:clipboard-check-multiple"
+          color="green"
+          onClick={() => copyToClipboard(code)}
+          className="clipboard-icon"
+        />
+      ) : (
+        <Icon
+          width="40"
+          icon="mdi:clipboard-multiple-outline"
+          onClick={() => copyToClipboard(code)}
+          className="clipboard-icon"
+        />
+      )}
+    </div>
+  );
 
   const CodeBlock = ({ code }) => (
     <span className="code-block">
@@ -60,7 +81,7 @@ const SiteInformation = () => {
         <li>
           Import the <code>analytics</code> function from the package:
           <br />
-          <CodeBlock code="import analytics from 'analytics-benson';" />
+          <CodeBlock code="import { analytics } from 'analytics-benson';" />
         </li>
         <li>
           Call the analytics function, passing in your siteName and clientId:
@@ -71,10 +92,10 @@ const SiteInformation = () => {
           Place the function call in a suitable location in your app, such as in
           the root component or a layout component. For example:
           <br />
-          <pre className="code-block">
-            {`import React from 'react';
+          <PreBlock
+            code={`import React from 'react';
 import './App.css';
-import analytics from 'analytics-benson';
+import { analytics } from 'analytics-benson';
 
 function App() {
   const CLIENT_ID = 'this-is-an-example-client-id'
@@ -88,9 +109,25 @@ function App() {
 }
 
 export default App;`}
-          </pre>
+          />
         </li>
       </ol>
+      <br />
+      <br />
+      <h3>How to use Analytics Benson with a CDN</h3>
+      <p>
+        If you prefer to use a CDN instead of installing the package, add the
+        following script tags to your HTML file, replacing 'yourSiteName' and
+        'yourClientId' with the appropriate values:
+      </p>
+      <PreBlock
+        code={`
+<script src="https://cdn.jsdelivr.net/npm/analytics-benson@1.0.8/analytics.min.js"></script>
+<script>
+  analytics('yourSiteName', 'yourClientId');
+</script>
+        `}
+      />
     </div>
   );
 };
