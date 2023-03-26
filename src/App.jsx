@@ -6,7 +6,7 @@ import { getAllSites } from './store/slices/sites';
 import Dashboard from './components/Dashboard';
 import { setUser } from './store/slices/auth';
 import analytics from 'analytics-benson';
-console.log(analytics);
+
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
