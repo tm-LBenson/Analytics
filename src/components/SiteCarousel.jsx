@@ -55,10 +55,9 @@ const SiteCarousel = ({ data, chartType }) => {
       <Carousel
         data={data}
         renderContent={(site) => {
-          console.log('site:', site);
-          console.log('date:', date);
+   
           const trafficData = site.traffic.find((t) => t.date === date);
-          console.log('trafficData:', trafficData);
+     
           if (trafficData) {
             return (
               <>
