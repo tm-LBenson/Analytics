@@ -1,3 +1,4 @@
+import { utcToLocalDateString } from './utils/dateLocal';
 const preprocessData = (sites) => {
   const siteMap = {};
 
@@ -13,7 +14,7 @@ const preprocessData = (sites) => {
 
     const formattedTraffic = site.traffic.map((trafficItem) => {
       const dateString = trafficItem.date.$date || trafficItem.date;
-      const formattedDate = new Date(dateString).toISOString().slice(0, 10);
+      const formattedDate = utcToLocalDateString(dateString); // Updated to use utcToLocalDateString
 
       return { ...trafficItem, date: formattedDate };
     });
@@ -23,7 +24,6 @@ const preprocessData = (sites) => {
       ...formattedTraffic,
     ];
 
-    // Reverse the traffic array to display the most recent date first
     siteMap[site.name].traffic.reverse();
   });
 
