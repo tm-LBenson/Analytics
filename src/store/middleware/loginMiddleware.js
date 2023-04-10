@@ -20,7 +20,7 @@ const loginMiddleware = (store) => (next) => async (action) => {
 
       if (response.ok) {
         const data = await response.json();
-       
+
         action.payload.token = data.token;
         action.payload.clientId = data.clientId;
         // Set a session cookie with the token and username
@@ -28,9 +28,11 @@ const loginMiddleware = (store) => (next) => async (action) => {
         cookies.set('session_username', username, { path: '/' });
         cookies.set('session_clientId', data.clientId, { path: '/' });
       } else {
+        action.error = 'Login failed.';
         console.error('Login failed.');
       }
     } catch (error) {
+      action.error = 'Login failed.';
       console.error('Server error occurred.', error);
     }
   }
