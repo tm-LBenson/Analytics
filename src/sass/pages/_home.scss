@@ -60,6 +60,7 @@
 }
 
 .content {
+  width: 100dvw;
   padding: 20rem;
   padding-top: 2rem;
   @include respond(md) {

@@ -7,6 +7,7 @@ const initialState = {
   token: null,
   clientId: null,
   isLoggedIn: false,
+  loginFail: false,
 };
 
 const authSlice = createSlice({
@@ -14,10 +15,15 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.user = action.payload.username;
-      state.token = action.payload.token;
-      state.clientId = action.payload.clientId;
-      state.isLoggedIn = true;
+      if (!action.error) {
+        state.user = action.payload.username;
+        state.token = action.payload.token;
+        state.clientId = action.payload.clientId;
+        state.isLoggedIn = true;
+        state.loginFail = false;
+      } else {
+        state.loginFail = true;
+      }
     },
 
     setUser: (state, action) => {
@@ -39,6 +45,7 @@ const authSlice = createSlice({
       state.token = null;
       state.clientId = null;
       state.isLoggedIn = false;
+      state.loginFail = false;
       cookies.remove('session_token');
       cookies.remove('session_username');
       window.location.reload();

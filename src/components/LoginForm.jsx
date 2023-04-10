@@ -1,6 +1,6 @@
 // LoginForm.js
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/slices/auth';
 import SignUpForm from './Signup';
 
@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showSignUpForm, setShowSignUpForm] = useState(false);
-
+  const { loginFail } = useSelector((state) => state.auth);
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ username, password }));
@@ -25,7 +25,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-group">
       {!showSignUpForm ? (
         <form onSubmit={handleLoginSubmit}>
           <div>
@@ -47,6 +47,7 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit">Log In</button>
+          {loginFail ? <p>Invalid login!</p> : null}
           <p>
             Don't have an account?{' '}
             <a
