@@ -32,9 +32,17 @@ export default function Dashboard() {
       setShowUserProfile(true);
     }
   }, [signedUp]);
+
   useEffect(() => {
-    if (sites.length === 0) {
+    if (!loggedIn) {
+      setShowUserProfile(false);
+    }
+  }, [loggedIn]);
+  useEffect(() => {
+    if (sites.length === 0 && loggedIn) {
       setShowUserProfile(true);
+    } else {
+      setShowUserProfile(false);
     }
   }, [sites]);
   const handleUserProfileClick = () => {
@@ -71,13 +79,21 @@ export default function Dashboard() {
       {loggedIn && showUserProfile && (
         <>
           <UserProfile />
-          <SiteInformation />
+          <SiteInformation
+            onSignupClick={handleSignupClick}
+            onLoginClick={handleLoginClick}
+          />
         </>
       )}
       {!selectedSite && !showUserProfile && <TrafficChart />}
       {!loggedIn &&
         currentComponent === 'SiteInformation' &&
-        !showUserProfile && <SiteInformation />}
+        !showUserProfile && (
+          <SiteInformation
+            onSignupClick={handleSignupClick}
+            onLoginClick={handleLoginClick}
+          />
+        )}
       {!loggedIn && currentComponent === 'LoginForm' && (
         <LoginForm onSignupClick={handleSignupClick} />
       )}
