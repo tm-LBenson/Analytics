@@ -57,50 +57,52 @@ const Sidebar = ({ items, onItemClick, onLoginClick, onUserProfileClick }) => {
 
   return (
     <div className={`sidebar ${isDarkMode ? 'dark' : ''}`}>
-      <div>
-        <h3 className="sidebar__logo">Sites</h3>
-        <ul className="sidebar__list">
-          {items.map((item, index) => (
-            <li
-              className="sidebar__list-item"
-              key={index}
-            >
-              <button
-                className="sidebar__list-item-button"
-                onClick={() => onItemClick(item)}
+      <div className="sidebar__content">
+        <div>
+          <h3 className="sidebar__logo">Sites</h3>
+          <ul className="sidebar__list">
+            {items.map((item, index) => (
+              <li
+                className="sidebar__list-item"
+                key={index}
               >
-                {item}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="sidebar__bottom-actions">
-        <hr />
-        <button
-          className="sidebar__toggle-button"
-          onClick={handleButtonClick}
-        >
-          <Icon icon="material-symbols:logout" />
-          {isLoggedIn ? 'Log out' : 'Log in'}
-        </button>
-        {isLoggedIn && (
+                <button
+                  className="sidebar__list-item-button"
+                  onClick={() => onItemClick(item)}
+                >
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="sidebar__bottom-actions">
+          <hr />
           <button
             className="sidebar__toggle-button"
-            onClick={onUserProfileClick}
+            onClick={handleButtonClick}
           >
-            <Icon icon="mdi:account-circle-outline" />
-            User Profile
+            <Icon icon="material-symbols:logout" />
+            {isLoggedIn ? 'Log out' : 'Log in'}
           </button>
-        )}
+          {isLoggedIn && (
+            <button
+              className="sidebar__toggle-button"
+              onClick={onUserProfileClick}
+            >
+              <Icon icon="mdi:account-circle-outline" />
+              User Profile
+            </button>
+          )}
 
-        <button
-          className="sidebar__toggle-button"
-          onClick={toggleDarkMode}
-        >
-          <Icon icon="mdi:theme-light-dark" />
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
+          <button
+            className="sidebar__toggle-button"
+            onClick={toggleDarkMode}
+          >
+            <Icon icon="mdi:theme-light-dark" />
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
+        </div>
       </div>
     </div>
   );
