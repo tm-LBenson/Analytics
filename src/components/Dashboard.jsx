@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TrafficChart from './TrafficChart';
 import SiteDetails from './SiteDetails';
 import Sidebar from './Sidebar';
@@ -17,6 +17,7 @@ export default function Dashboard() {
   const [showUserProfile, setShowUserProfile] = useState(false);
   const loggedIn = useSelector((state) => state.auth.isLoggedIn);
   const sites = useSelector((state) => state.sites.sites);
+  const { signedUp } = useSelector((state) => state.auth);
 
   // Group sites by their name
   const groupedSites = sites.reduce((acc, site) => {
@@ -26,7 +27,16 @@ export default function Dashboard() {
     acc[site.name].push(site);
     return acc;
   }, {});
-
+  useEffect(() => {
+    if (signedUp) {
+      setShowUserProfile(true);
+    }
+  }, [signedUp]);
+  useEffect(() => {
+    if (sites.length === 0) {
+      setShowUserProfile(true);
+    }
+  }, [sites]);
   const handleUserProfileClick = () => {
     setShowUserProfile(!showUserProfile);
   };
