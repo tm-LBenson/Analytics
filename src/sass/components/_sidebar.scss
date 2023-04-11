@@ -5,8 +5,8 @@
   bottom: 0;
   left: 0;
   z-index: 1000;
-  width: 100%;
-  max-width: 20rem;
+
+  max-width: 50rem;
   padding: 1.5rem;
   font-size: 2rem;
   display: flex;
@@ -112,4 +112,36 @@
 
   // Hide scrollbar for Firefox
   scrollbar-width: none;
+}
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+.bm-burger-bars {
+  background-color: #373a47;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu {
+  padding: 2.5em 1.5em;
+  font-size: 1.15em;
+}
+
+.bm-overlay {
+  height: 100vh !important;
+  top: 0;
+  left: 0;
 }

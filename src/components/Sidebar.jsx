@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/slices/auth';
 import { clearData } from '../store/slices/sites';
-
+import { slide as Menu } from 'react-burger-menu';
 const Sidebar = ({ items, onItemClick, onLoginClick, onUserProfileClick }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -56,7 +56,7 @@ const Sidebar = ({ items, onItemClick, onLoginClick, onUserProfileClick }) => {
   };
 
   return (
-    <div className={`sidebar ${isDarkMode ? 'dark' : ''}`}>
+    <Menu className={`sidebar ${isDarkMode ? 'dark' : ''}`}>
       <div className="sidebar__content">
         <div>
           <h3 className="sidebar__logo">Sites</h3>
@@ -104,7 +104,7 @@ const Sidebar = ({ items, onItemClick, onLoginClick, onUserProfileClick }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Menu>
   );
 };
 
