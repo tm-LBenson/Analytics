@@ -9,6 +9,7 @@
     flex-direction: column;
     margin-bottom: $spacing-md;
     gap: 2rem;
+    max-width: 60rem;
   }
 }
 
@@ -47,4 +48,12 @@ button[type='submit'] {
   font-size: 0.875rem;
   color: $success-color;
   margin-top: $spacing-xs;
+}
+select {
+  min-width: 20rem;
+  max-width: 60rem;
+}
+
+.link {
+  cursor: pointer;
 }

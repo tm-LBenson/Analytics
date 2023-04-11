@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 
-const SiteInformation = () => {
+const SiteInformation = ({ onLoginClick, onSignupClick }) => {
   const [copiedCode, setCopiedCode] = useState('');
 
   const copyToClipboard = (text) => {
@@ -70,8 +70,21 @@ const SiteInformation = () => {
         data-driven decisions to improve your online presence.
       </p>
       <p>
-        To get started, sign up for an account or log in to your existing
-        account.
+        To get started,{' '}
+        <a
+          onClick={onSignupClick}
+          className="link"
+        >
+          sign up
+        </a>{' '}
+        for an account or{' '}
+        <a
+          onClick={onLoginClick}
+          className="link"
+        >
+          log in
+        </a>{' '}
+        to your existing account.
       </p>
       <h3>How to use Analytics Benson in your React app</h3>
 
