@@ -1,3 +1,6 @@
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 const signupMiddleware = (store) => (next) => async (action) => {
   if (action.type === 'auth/signup') {
     const { username, password } = action.payload;
@@ -22,6 +25,7 @@ const signupMiddleware = (store) => (next) => async (action) => {
 
         action.payload.token = data.token;
         action.payload.clientId = data.clientId;
+        console.log(action.clientId);
       } else {
         console.error('Signup failed.');
       }
