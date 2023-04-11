@@ -37,7 +37,7 @@ The project is built using Vite and React, and it retrieves data from an Express
 
 ### Integrating Analytics Benson Package
 
-1. Sign up for an Analytics Benson account [here](https://analytics-benson/signup).
+1. Sign up for an Analytics Benson account [here](https://analytics-benson.netlify.app/).
 
 2. Log in to your Analytics Benson account and navigate to your user profile. Click on the "Show Client ID" button to reveal your `client_id`. This unique identifier is used to associate your site's traffic data with your account.
    ![image](https://user-images.githubusercontent.com/105423307/231192154-6bd60d9b-5be7-405e-ae7d-4fe61566c52b.png)
