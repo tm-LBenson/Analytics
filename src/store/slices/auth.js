@@ -8,6 +8,7 @@ const initialState = {
   clientId: null,
   isLoggedIn: false,
   loginFail: false,
+  signedUp: false,
 };
 
 const authSlice = createSlice({
@@ -39,6 +40,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.clientId = action.payload.clientId;
       state.isLoggedIn = true;
+      state.signedUp = true;
     },
     logout: (state) => {
       state.user = null;
