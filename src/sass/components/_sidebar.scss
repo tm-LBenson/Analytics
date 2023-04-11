@@ -11,7 +11,6 @@
   font-size: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   &__logo {
     font-size: 3rem;
@@ -75,6 +74,14 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  max-height: calc(100vh - 8rem);
+
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  scrollbar-width: none;
 }
 
 .sidebar__list-item {
@@ -90,4 +97,19 @@
   text-align: left;
   padding: 0.5rem;
   cursor: pointer;
+}
+
+.sidebar__content {
+  max-height: 100%;
+  overflow-y: auto;
+  padding-bottom: 2rem; // Adjust this value for desired empty space
+
+  // Hide scrollbar for WebKit-based browsers
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  // Hide scrollbar for Firefox
+  scrollbar-width: none;
 }
