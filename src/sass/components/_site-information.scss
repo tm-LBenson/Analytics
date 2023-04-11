@@ -1,0 +1,32 @@
+// components/SiteInformation/_site-information.scss
+.site-information {
+  width: 100%;
+  line-height: 5rem;
+  .code-block {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+
+    &.copied {
+      background-color: rgba(
+        0,
+        255,
+        0,
+        0.2
+      ); // Adjust the copied state background color
+    }
+
+    .clipboard-icon {
+      position: absolute;
+      top: 5%;
+      right: -5rem;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,28 +1,27 @@
-// Default theme styles
-.theme-default {
+// dark-mode theme styles
+.dark-mode {
   body {
     width: 100%;
     font-family: 'Work Sans', sans-serif;
     font-size: $font-size-base;
     line-height: $line-height-base;
-    color: $dark;
-    background-color: $white;
+    color: $white;
+    background-color: $dark;
   }
-
   a {
-    color: $link-color;
+    color: $info;
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: $link-hover-color;
+      color: $info-hover;
       text-decoration: underline;
     }
   }
 
   // Buttons
   button {
-    background-color: $primary;
+    background-color: $secondary;
     color: $white;
     font-size: $font-size-md;
     padding: $spacing-sm $spacing-md;
@@ -33,7 +32,7 @@
 
     &:hover,
     &:focus {
-      background-color: $primary-hover;
+      background-color: $secondary-hover;
     }
   }
 
@@ -44,9 +43,10 @@
     width: 100%;
     padding: $spacing-sm;
     font-size: $font-size-md;
-    color: $dark;
+    color: $white;
     border: 1px solid $input-border-color;
     border-radius: $border-radius;
+    background-color: $dark-hover;
     outline: none;
 
     &:focus {
@@ -54,7 +54,7 @@
     }
 
     &:disabled {
-      background-color: $light;
+      background-color: $light-hover;
       color: $input-disabled-color;
     }
   }
@@ -67,25 +67,22 @@
   }
 
   .alert-success {
-    background-color: $success-color;
+    background-color: $success;
     color: $white;
   }
 
   .alert-error {
-    background-color: $error-color;
+    background-color: $danger;
     color: $white;
   }
 
-  // Default theme styles
-
-  // Sidebar styles for default theme
   .sidebar {
-    background-color: $lighter-bg;
+    background-color: $footer-bg;
     box-shadow: 0 0.5rem 1rem rgba($dark, 0.1);
 
     &__header {
-      background-color: $lighter-primary;
-      color: $dark;
+      background-color: $primary;
+      color: $white;
     }
 
     &__link {
@@ -93,22 +90,23 @@
 
       &:hover,
       &:focus {
-        background-color: $lighter-primary-hover;
+        background-color: $primary-hover;
       }
 
       &--active {
-        background-color: $lighter-primary;
+        background-color: $primary;
       }
     }
   }
 
   .code-block {
     display: inline-block;
-    background-color: #f0f0f0;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     padding: 2px 4px;
     font-family: 'Courier New', Courier, monospace;
   }
-  // Theme-specific styles
-  // Add your own custom styles and overrides here
 }
+
+// Theme-specific styles
+// Add your own custom styles and overrides here

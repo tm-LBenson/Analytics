@@ -1,8 +1,12 @@
-# Analytics
+# Analytics Dashboard
 
-This project is an analytics dashboard that visualizes website traffic data for multiple sites. It provides insights into daily visitors, device types, screen sizes, and IP addresses. The dashboard displays traffic data over different time periods, such as 30 days, 180 days, and 365 days.
+This project is an analytics dashboard that visualizes website traffic data for multiple sites. It provides insights into daily visitors, device types, screen sizes, and IP addresses.
 
 The project is built using Vite and React, and it retrieves data from an Express server that processes visitor information from various websites.
+
+## Deployed Live
+
+[Netlify](https://portfolio-analytics.netlify.app/)
 
 ## Getting Started
 
@@ -10,29 +14,68 @@ The project is built using Vite and React, and it retrieves data from an Express
 
 - Node.js v14.x or higher
 - npm v6.x or higher
+- Analytics Benson package installed (instructions below)
 
 ### Installation
 
 1. Clone the repository:
 
+```bash
    git clone https://github.com/yourusername/analytics-dashboard.git
+```
 
-2. Change to the project directory:  
-   `cd analytics`
+2. Change to the project directory:
 
-3. Install dependencies:  
-   `npm install`
+   ```bash
+   cd analytics
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Integrating Analytics Benson Package
+
+1. Sign up for an Analytics Benson account [here](https://analytics-benson.netlify.app/).
+
+2. Log in to your Analytics Benson account and navigate to your user profile. Click on the "Show Client ID" button to reveal your `client_id`. This unique identifier is used to associate your site's traffic data with your account.
+   ![image](https://user-images.githubusercontent.com/105423307/231192154-6bd60d9b-5be7-405e-ae7d-4fe61566c52b.png)
+3. Install the [Analytics Benson package](https://www.npmjs.com/package/analytics-benson):
+
+   ```bash
+   npm install analytics-benson
+   ```
+
+4. Import the `analytics` function from the package:
+
+```js
+import analytics from 'analytics-benson';
+```
+
+5. Call the analytics function, passing in your siteName and clientId:
+
+```js
+analytics('Your Site Name', 'your-client-id');
+```
+
+Replace `'your-client-id'` with the actual `client_id` you obtained from your Analytics Benson account, and replace `'Your Site Name'`with the name of your site as you would like it to appear in the analytics dashboard.
+
+6. Place the function call in a suitable location in your app, such as in the root component or a layout component.
 
 ### Development
 
-To start the development server, run:  
-`npm run dev`
+To start the development server, run:
 
-The development server will start at http://localhost:5173
+```bash
+npm run dev
+```
+
+The development server will start at `http://localhost:5173`
 
 ### Building for Production
 
-To build the project for production, run:  
+To build the project for production, run:
 `npm run build`
 
 The production-ready files will be generated in the dist folder.
@@ -43,58 +86,12 @@ Follow the deployment instructions specific to your hosting provider to deploy t
 
 ### Features
 
-- Multiple sites analytics support
+- Multiple sites analytics support using Analytics Benson package
 - Daily visitor count
 - Device type distribution (desktop, mobile, tablet)
 - Screen size distribution
-- IP address tracking
-- Customizable time periods (30 days, 180 days, 365 days)
-
-## Checklist for Analytics site
-
-- [ ] Create the Express server
-
-  - [x] Set up basic server with required middleware (e.g., body-parser, cors)
-  - [ ] Create an endpoint for receiving POST requests with user data
-  - [ ] Save incoming user data to the database
-
-- [ ] Implement data gathering in the client-side React app
-
-  - [ ] Check for the existence of a cookie on each visit
-  - [ ] If the cookie does not exist, create a new cookie with a 1-hour expiration
-  - [ ] Gather user data (IP address, screen size, device type)
-  - [ ] Send a POST request to the Express server with the collected user data
-
-- [ ] Update the database schema and model to store relevant data
-
-  - [ ] Create tables/collections for websites, daily traffic, and user data
-  - [ ] Implement data relationships (e.g., foreign keys) as needed
-
-- [ ] Implement data aggregation and processing on the server-side
-
-  - [ ] Calculate total traffic per website
-  - [ ] Calculate traffic breakdown by device type
-  - [ ] Calculate other relevant metrics as needed
-
-- [ ] Create API endpoints to fetch aggregated data from the server
-
-  - [ ] Implement an endpoint to retrieve daily traffic data
-  - [ ] Implement other endpoints as needed for additional metrics
-
-- [ ] Update the React app to fetch real data from the server
-
-  - [ ] Replace mock data with API calls to the Express server
-  - [ ] Update the bar graph to display real traffic data
-  - [ ] Implement additional visualizations and components as needed
-
-- [ ] Deploy the React app and Express server
-  - [ ] Set up the production environment (e.g., environment variables, database)
-  - [ ] Deploy the Express server (e.g., Heroku, DigitalOcean, AWS)
-  - [ ] Deploy the React app (e.g., Netlify, Vercel, AWS)
-
-```
+- IP address tracking/location tracking
 
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```

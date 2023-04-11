@@ -4,36 +4,40 @@
 // main.scss
 
 // Abstracts
-@import 'abstracts/_variables';
-@import 'abstracts/_mixins';
-@import 'abstracts/_functions';
-@import 'abstracts/_media';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+@import 'abstracts/media';
+@import 'abstracts/utility';
 
 // Base
-@import 'base/_animations';
-@import 'base/_typography';
-@import 'base/_base';
+@import 'base/animations';
+@import 'base/typography';
+@import 'base/base';
 
 // Components
-@import 'components/_buttons';
-@import 'components/_forms';
-@import 'components/_cards';
-
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/cards';
+@import 'components/sidebar';
+@import 'components/chart';
+@import 'components/site-information';
 // Layout
-@import 'layout/_header';
-@import 'layout/_footer';
-@import 'layout/_grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
 
 // Pages
-@import 'pages/_home';
-@import 'pages/_about';
-@import 'pages/_contact';
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/contact';
 
 // Themes
-@import 'themes/_default';
-@import 'themes/_alternate';
+@import 'themes/default';
+@import 'themes/dark-mode';
 
 // Vendors
-@import 'vendors/_normalize';
+@import 'vendors/leaflet';
+@import 'vendors/normalize';
 // @import 'vendors/_bootstrap';
 // @import 'vendors/_mantine';

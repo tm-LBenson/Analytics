@@ -58,3 +58,20 @@
     }
   }
 }
+
+.content {
+  width: 100dvw;
+  padding: 20rem;
+  padding-top: 2rem;
+  @include respond(md) {
+    padding: 25%;
+    padding-top: 2rem;
+    /* adjust the padding at your breakpoint */
+  }
+
+  @include respond(lg) {
+    padding: 20%;
+    padding-top: 2rem;
+    /* adjust the padding at your breakpoint */
+  }
+}
