@@ -9,7 +9,7 @@ import SiteInformation from './SiteInformation';
 import LoginForm from './LoginForm';
 import SignUpForm from './Signup';
 import UserProfile from './UserProfile';
-import LargeSidebar from './LargeSideBar';
+import LargeSidebar from './DesktopSidebar';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
