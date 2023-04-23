@@ -9,6 +9,7 @@ import SiteInformation from './SiteInformation';
 import LoginForm from './LoginForm';
 import SignUpForm from './Signup';
 import UserProfile from './UserProfile';
+import LargeSidebar from './LargeSideBar';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function Dashboard() {
   const loggedIn = useSelector((state) => state.auth.isLoggedIn);
   const sites = useSelector((state) => state.sites.sites);
   const { signedUp } = useSelector((state) => state.auth);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Group sites by their name
   const groupedSites = sites.reduce((acc, site) => {
@@ -45,6 +47,18 @@ export default function Dashboard() {
       setShowUserProfile(false);
     }
   }, [sites]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const handleUserProfileClick = () => {
     setShowUserProfile(!showUserProfile);
   };
@@ -103,12 +117,21 @@ export default function Dashboard() {
 
       {
         <>
-          <Sidebar
-            items={Object.keys(groupedSites)}
-            onItemClick={handleSiteClick}
-            onLoginClick={handleLoginClick}
-            onUserProfileClick={handleUserProfileClick}
-          />
+          {isMobile ? (
+            <Sidebar
+              items={Object.keys(groupedSites)}
+              onItemClick={handleSiteClick}
+              onLoginClick={handleLoginClick}
+              onUserProfileClick={handleUserProfileClick}
+            />
+          ) : (
+            <LargeSidebar
+              items={Object.keys(groupedSites)}
+              onItemClick={handleSiteClick}
+              onLoginClick={handleLoginClick}
+              onUserProfileClick={handleUserProfileClick}
+            />
+          )}
 
           {selectedSite || showUserProfile ? (
             <button onClick={handleOverviewClick}>Site Overview</button>
