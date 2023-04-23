@@ -20,7 +20,7 @@ export default function Dashboard() {
   const sites = useSelector((state) => state.sites.sites);
   const { signedUp } = useSelector((state) => state.auth);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+//
   // Group sites by their name
   const groupedSites = sites.reduce((acc, site) => {
     if (!acc[site.name]) {
