@@ -13,49 +13,26 @@ let DefaultIcon = L.icon({
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
-const LocationMap = ({ ipAddresses }) => {
-  const [locations, setLocations] = useState([]);
+
+const LocationMap = ({ locations }) => {
+  const [mappedLocations, setMappedLocations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   useEffect(() => {
-    const fetchLocations = async () => {
-      const locs = [];
-
-      for (const ip of ipAddresses) {
-        let data;
-
-        const cachedData = localStorage.getItem(ip);
-
-        if (cachedData) {
-          data = JSON.parse(cachedData);
-        } else {
-          await delay(1000); // Add a delay of 1 second (1000 ms)
-
-          const response = await fetch(`https://ipapi.co/${ip}/json/`);
-          data = await response.json();
-
-          localStorage.setItem(ip, JSON.stringify(data));
-        }
-
-        locs.push({
-          ip,
-          latitude: data.latitude,
-          longitude: data.longitude,
-          city: data.city,
-          region: data.region,
-          country: data.country_name,
-        });
-      }
-
-      setLocations(locs);
-      setIsLoading(false);
-    };
-
     setIsLoading(true);
-    fetchLocations();
-  }, [ipAddresses]);
+
+    const locs = locations.map((location) => ({
+      city: location.city,
+      region: location.region,
+      country: location.country,
+      count: location.count,
+      latitude: location.latitude,
+      longitude: location.longitude,
+    }));
+
+    setMappedLocations(locs);
+    setIsLoading(false);
+  }, [locations]);
 
   return isLoading ? (
     <div>Loading...</div>
@@ -63,7 +40,7 @@ const LocationMap = ({ ipAddresses }) => {
     <>
       <br />
       <MapContainer
-        key={JSON.stringify(ipAddresses)}
+        key={JSON.stringify(locations)}
         center={[39.8283, -98.5795]}
         zoom={3.5}
       >
@@ -71,14 +48,14 @@ const LocationMap = ({ ipAddresses }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations.map((location) => (
+        {mappedLocations.map((location) => (
           <Marker
             key={crypto.randomUUID()}
             position={[location.latitude, location.longitude]}
           >
             <Popup>
-              {location.ip} <br />
-              {location.city}, {location.region}, {location.country}
+              {location.city}, {location.region}, {location.country} <br />
+              Visits: {location.count}
             </Popup>
           </Marker>
         ))}
