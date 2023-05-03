@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "analytics-benson": "3.0.1",
+    "analytics-benson": "3.1.2",
     "chart.js": "^4.2.1",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",

@@ -9,9 +9,9 @@ const SiteDetails = ({ siteName, data }) => {
     setChartType(event.target.value);
   };
 
-  const ipAddresses = data
+  const locations = data
     .flatMap((site) => site.traffic)
-    .flatMap((traffic) => traffic.ipAddresses.map((ip) => ip.address));
+    .flatMap((traffic) => traffic.locations);
 
   return (
     <div>
@@ -32,7 +32,7 @@ const SiteDetails = ({ siteName, data }) => {
           chartType={chartType}
         />
       )}
-      {chartType === 'locationMap' && <LocationMap ipAddresses={ipAddresses} />}
+      {chartType === 'locationMap' && <LocationMap locations={locations} />}
     </div>
   );
 };
