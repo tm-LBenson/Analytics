@@ -9,6 +9,7 @@ import SiteInformation from './SiteInformation';
 import LoginForm from './LoginForm';
 import SignUpForm from './Signup';
 import UserProfile from './UserProfile';
+import LargeSidebar from './DesktopSidebar';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ export default function Dashboard() {
   const loggedIn = useSelector((state) => state.auth.isLoggedIn);
   const sites = useSelector((state) => state.sites.sites);
   const { signedUp } = useSelector((state) => state.auth);
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+//
   // Group sites by their name
   const groupedSites = sites.reduce((acc, site) => {
     if (!acc[site.name]) {
@@ -32,11 +34,31 @@ export default function Dashboard() {
       setShowUserProfile(true);
     }
   }, [signedUp]);
+
   useEffect(() => {
-    if (sites.length === 0) {
+    if (!loggedIn) {
+      setShowUserProfile(false);
+    }
+  }, [loggedIn]);
+  useEffect(() => {
+    if (sites.length === 0 && loggedIn) {
       setShowUserProfile(true);
+    } else {
+      setShowUserProfile(false);
     }
   }, [sites]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const handleUserProfileClick = () => {
     setShowUserProfile(!showUserProfile);
   };
@@ -71,13 +93,21 @@ export default function Dashboard() {
       {loggedIn && showUserProfile && (
         <>
           <UserProfile />
-          <SiteInformation />
+          <SiteInformation
+            onSignupClick={handleSignupClick}
+            onLoginClick={handleLoginClick}
+          />
         </>
       )}
       {!selectedSite && !showUserProfile && <TrafficChart />}
       {!loggedIn &&
         currentComponent === 'SiteInformation' &&
-        !showUserProfile && <SiteInformation />}
+        !showUserProfile && (
+          <SiteInformation
+            onSignupClick={handleSignupClick}
+            onLoginClick={handleLoginClick}
+          />
+        )}
       {!loggedIn && currentComponent === 'LoginForm' && (
         <LoginForm onSignupClick={handleSignupClick} />
       )}
@@ -87,12 +117,21 @@ export default function Dashboard() {
 
       {
         <>
-          <Sidebar
-            items={Object.keys(groupedSites)}
-            onItemClick={handleSiteClick}
-            onLoginClick={handleLoginClick}
-            onUserProfileClick={handleUserProfileClick}
-          />
+          {isMobile ? (
+            <Sidebar
+              items={Object.keys(groupedSites)}
+              onItemClick={handleSiteClick}
+              onLoginClick={handleLoginClick}
+              onUserProfileClick={handleUserProfileClick}
+            />
+          ) : (
+            <LargeSidebar
+              items={Object.keys(groupedSites)}
+              onItemClick={handleSiteClick}
+              onLoginClick={handleLoginClick}
+              onUserProfileClick={handleUserProfileClick}
+            />
+          )}
 
           {selectedSite || showUserProfile ? (
             <button onClick={handleOverviewClick}>Site Overview</button>
