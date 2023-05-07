@@ -86,11 +86,12 @@ Follow the deployment instructions specific to your hosting provider to deploy t
 
 ### Features
 
+- Banner to display your site is using cookies to collect analytic data. 
 - Multiple sites analytics support using Analytics Benson package
 - Daily visitor count
 - Device type distribution (desktop, mobile, tablet)
 - Screen size distribution
-- IP address tracking/location tracking
+- Location tracking(broad area based on IP)
 
 ### License
 
